@@ -8,7 +8,8 @@ function signin(event){
             // console.log(user)
             console.log("Signed in")
             document.querySelector(".loader-signin").style.display = "none";
-            location.href = "/AQM_Website"
+            location.href = "/AQM_Website"    // For running on the webpage
+            //location.href = "/" // For running in a local PC
             // document.getElementsByClassName("text")[0].style.display = "block";
         })
         .catch((error) => {
