@@ -31,9 +31,9 @@ function signOut(){
 var timestamp_arr = Array()
 var temp = Array()
 var co = Array()
-var aq = Array()
-var pm2 = Array()
-var pm10 = Array()
+//var aq = Array()
+//var pm2 = Array()
+//var pm10 = Array()
 
 function getData(event){
     event.preventDefault();
@@ -54,17 +54,17 @@ function getData(event){
             <th class="td">Timestamp</th>
             <th class="temp">Temperature (&deg;C)</th>
             <th class="co">CO (µg/m³)</th>
-            <th class="aq">Air_Quality_in_terms_of_Smoke_NOx_VOCs_Overall_Concentration (µg/m³)</th>
-            <th class="pm25">PM2.5 (µg/m³)</th>
-            <th class="pm10">PM10 (µg/m³)</th>
+            //<th class="aq">Air_Quality_in_terms_of_Smoke_NOx_VOCs_Overall_Concentration (µg/m³)</th>
+            //<th class="pm25">PM2.5 (µg/m³)</th>
+            //<th class="pm10">PM10 (µg/m³)</th>
         </tr>
     `;
     timestamp_arr = Array()
     temp = Array()
     co = Array()
-    aq = Array()
-    pm2 = Array()
-    pm10 = Array() 
+    //aq = Array()
+    //pm2 = Array()
+    //pm10 = Array() 
 
 
 
@@ -106,19 +106,19 @@ function insert_data(timestamp, data){
     timestamp_arr.push(timestamp)
     temp.push(data[0])
     co.push(data[1])
-    aq.push(data[2])
-    pm2.push(data[3])
-    pm10.push(data[4])
-    // console.log(data);
+    //aq.push(data[2])
+    //pm2.push(data[3])
+    //pm10.push(data[4])
+     // console.log(data);
     var row = document.getElementById('data')
     row.innerHTML+= `
         <tr>
             <td class="td">${timestamp}</td>
             <td class="temp">${data[0]}</td>
             <td class="co">${data[1]}</td>
-            <td class="aq">${data[2]}</td>
-            <td class="pm25">${data[3]}</td>
-            <td class="pm10">${data[4]}</td> 
+            //<td class="aq">${data[2]}</td>
+            //<td class="pm25">${data[3]}</td>
+            //<td class="pm10">${data[4]}</td> 
         </tr>`; 
         
         // draw_graph();
@@ -444,175 +444,4 @@ IF user enters date ---->
             }
         }
     });
-}
-
-function draw_aq_graph(){
-    document.querySelectorAll("canvas").forEach(canvas=> {
-        canvas.style.display="none"
-    })
-   document.getElementById('aq').style.display="block"
-   new Chart(document.getElementById('aq').getContext('2d'), {
-    // The type of chart we want to create
-    type: 'line',
-    // The data for our dataset
-    data: {
-        labels: timestamp_arr,
-        datasets: [{
-            label: 'Air_Quality_in_terms_of_Smoke_NOx_VOCs_Overall_Concentration (µg/m³)',
-            backgroundColor: 'rgb(238, 130, 228)',
-            borderColor: 'rgb(238, 130, 228)',
-            data: aq,
-            fill: false
-        }]
-    },
-    // .slice(0,temp.length/10
-
-    // Configuration options go here
-    options: {
-        //responsive: false,
-        //events: ['click'],
-        title: {
-                display: true,
-                text: 'Air_Quality_in_terms_of_Smoke_NOx_VOCs_Overall_Concentration Chart'
-        },
-        tooltips: {
-                mode: 'nearest',
-                intersect: true,
-       },
-        hover: {
-                mode: 'nearest',
-                intersect: true
-        },
-        scales: {
-            xAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Date and Time'
-                }
-            }],
-            yAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Air_Quality_in_terms_of_Smoke_NOx_VOCs_Overall_Concentration (µg/m³)'
-                }
-            }]
-        }
-    }
-});
-}
-
-function draw_pm2_graph(){
-    document.querySelectorAll("canvas").forEach(canvas=> {
-        canvas.style.display="none"
-    })
-   document.getElementById('pm2').style.display="block"
-   new Chart(document.getElementById('pm2').getContext('2d'), {
-    // The type of chart we want to create
-    type: 'line',
-    // The data for our dataset
-    data: {
-        labels: timestamp_arr,
-        datasets: [{
-            label: 'PM2.5 (µg/m³)',
-            backgroundColor: 'rgb(60, 179, 113)',
-            borderColor: 'rgb(60, 179, 113)',
-            data: pm2,
-            fill: false
-        }]
-    },
-    // .slice(0,temp.length/10
-
-    // Configuration options go here
-    options: {
-        //responsive: false,
-        //events: ['click'],
-        title: {
-                display: true,
-                text: 'PM2.5 Chart'
-        },
-        tooltips: {
-                mode: 'nearest',
-                intersect: true,
-        },
-        hover: {
-                mode: 'nearest',
-                intersect: true
-        },
-        scales: {
-            xAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Date and Time'
-                }
-            }],
-            yAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'PM2.5 (µg/m³)'
-                }
-            }]
-        }
-    }
-});
-}
-
-function draw_pm10_graph(){
-    document.querySelectorAll("canvas").forEach(canvas=> {
-        canvas.style.display="none"
-    })
-   document.getElementById('pm10').style.display="block"
-   new Chart(document.getElementById('pm10').getContext('2d'), {
-    // The type of chart we want to create
-    type: 'line',
-    // The data for our dataset
-    data: {
-        labels: timestamp_arr,
-        datasets: [{
-            label: 'PM10 (µg/m³)',
-            backgroundColor: 'rgb(72, 209, 204)',
-            borderColor: 'rgb(72, 209,204)',
-            data: pm10,
-            fill: false
-        }]
-    },
-    // .slice(0,temp.length/10
-
-    // Configuration options go here
-    options: {
-        //responsive: false,
-        //events: ['click'],
-        title: {
-                display: true,
-                text: 'PM10 Chart'
-        },
-        tooltips: {
-                mode: 'nearest',
-                intersect: true,
-        },
-        hover: {
-                mode: 'nearest',
-                intersect: true
-        },
-        scales: {
-            xAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Date and Time'
-                }
-            }],
-            yAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'PM10 (µg/m³)'
-                }
-            }]
-        }
-    }
-});
 }
