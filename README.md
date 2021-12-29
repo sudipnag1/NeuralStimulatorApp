@@ -1,4 +1,4 @@
-# Air Quality Monitoring (AQM) Website
+# WINIoT: Wireless Interfacing of Neurons through Internet of Things 
 
-Energy Autonomous Neural Stimulator design by Dr. Sudip Nag
+Energy Autonomous and Cloud Enabled Neural Stimulator design by Dr. Sudip Nag
 
